@@ -4576,8 +4576,8 @@ function library:init()
     
     -- Watermark
     do
-        if not ZeroDay then
-            getgenv().ZeroDay = {
+        if not ZeroDay_User then
+            getgenv().ZeroDay_User = {
                 UID = 0, 
                 User = "admin"
             }
@@ -4586,7 +4586,7 @@ function library:init()
             objects = {};
             text = {
                 {self.cheatname, true},
-                {("%s (uid %s)"):format(ZeroDay.User, tostring(ZeroDay.UID)), true},
+                {("%s (uid %s)"):format(ZeroDay_User.User, tostring(ZeroDay_User.UID)), true},
                 {self.gamename, true},
                 {'0 fps', true},
                 {'0ms', true},
