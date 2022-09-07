@@ -4585,14 +4585,14 @@ function library:init()
         self.watermark = {
             objects = {};
             text = {
-                {self.cheatname, true},
-                {("%s (uid %s)"):format(ZeroDay_User.User, tostring(ZeroDay_User.UID)), true},
-                {self.gamename, true},
-                {'0 fps', true},
-                {'0ms', true},
-                {'00:00:00', true},
-                {'M, D, Y', true},
-            };
+                {self.cheatname, library.flags.watermark_addons == 1 and true or false},
+                {("%s (uid %s)"):format(ZeroDay_User.User, tostring(ZeroDay_User.UID)), library.flags.watermark_addons == 2 and true or false},
+                {self.gamename, library.flags.watermark_addons == 3 and true or false},
+                {'0 fps', library.flags.watermark_addons == 4 and true or false},
+                {'0ms', library.flags.watermark_addons == 5 and true or false},
+                {'00:00:00', library.flags.watermark_addons == 6 and true or false},
+                {'M, D, Y', library.flags.watermark_addons == 7 and true or false},
+            }; 
             lock = 'custom';
             position = newUDim2(0,0,0,0);
             refreshrate = 25;
@@ -4832,6 +4832,7 @@ function library:CreateSettingsTab(menu)
     mainSection:AddList({text = 'Position', flag = 'watermark_pos', selected = 'Custom', values = {'Top', 'Top Left', 'Top Right', 'Bottom Left', 'Bottom Right', 'Custom'}, callback = function(val)
         library.watermark.lock = val;
     end})
+    mainSection:AddList({text = 'Addons', flag = 'watermark_addons', values = {'Cheat Name', 'Game Name', 'FPS Counter', 'Ping Counter', 'Time', 'Month  Day  Year'}});
     mainSection:AddSlider({text = 'Custom X', flag = 'watermark_x', suffix = '%', min = 0, max = 100, increment = .1});
     mainSection:AddSlider({text = 'Custom Y', flag = 'watermark_y', suffix = '%', min = 0, max = 100, increment = .1});
 
