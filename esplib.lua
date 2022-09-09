@@ -14,7 +14,7 @@ local esp = {
     textfont       = 2;
     textsize       = 13;
     snaplineOrigin = Vector2.new(0,0);
-    custombox      = 'default';
+    custombox      = 'Default';
     distancemode   = 'meter';
     targets        = {};
     players        = {};
@@ -296,7 +296,7 @@ end
             local leftBarPos      = 1;
             local rightBarPos     = 1;
 
-            drawings.box.Visible = esp.box[1] and esp.custombox == 'default';
+            drawings.box.Visible = esp.box[1] and esp.custombox == 'Default';
             drawings.box_fill.Visible = esp.box[1] and esp.boxfill[1];
             drawings.box_outline.Visible = drawings.box.Visible and esp.outline[1];
             if esp.box[1] then
