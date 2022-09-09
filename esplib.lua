@@ -489,7 +489,7 @@ end
                         drawing[1].Text         = tostring(textinfo.text ~= nil and textinfo.text or default.Default or name)..(typeof(default.Suffix) == 'string' and default.Suffix or '');
                         drawing[1].Color        = (not default.IgnoreTarget and color or nil) or textinfo.color or default.Color or newColor3(1,1,1);
                         drawing[1].Transparency = transparency;
-                        drawing[1].Center       = (default.Position == 'top' or default.Position == 'bottom')
+                        drawing[1].Center       = (default.Position == 'Top' or default.Position == 'Bottom')
                         drawing[1].Outline      = esp.outline[1];
                         drawing[1].OutlineColor = esp.outline[2];
                         drawing[1].Font         = esp.textfont;
