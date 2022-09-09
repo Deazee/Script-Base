@@ -29,10 +29,10 @@ local esp = {
     arrow          = {false, Color3.new(1,1,1), 1};
     chams          = {false, Color3.new(1,1,1), Color3.new(1,1,1), 1, 1, true};
     textlayout     = {
-        ['Name']     = {Position = 'top', Enabled = false, Color = Color3.new(1,1,1), Transparency = 0};
-        ['Distance'] = {Position = 'bottom', Enabled = false, Default = 'NaN', Suffix = 'm', Color = Color3.new(1,1,1), Transparency = 0};
-        ['Tool']     = {Position = 'bottom', Enabled = false, Default = 'None', Color = Color3.new(1,1,1), Transparency = 0};
-        ['Health']   = {Position = 'left', Enabled = false, IgnoreTarget = true, Default = 'NaN', Color = Color3.new(1,1,1), Transparency = 0};
+        ['Name']     = {Position = 'Top', Enabled = false, Color = Color3.new(1,1,1), Transparency = 0};
+        ['Distance'] = {Position = 'Bottom', Enabled = false, Default = 'NaN', Suffix = 'm', Color = Color3.new(1,1,1), Transparency = 0};
+        ['Tool']     = {Position = 'Bottom', Enabled = false, Default = 'None', Color = Color3.new(1,1,1), Transparency = 0};
+        ['Health']   = {Position = 'Left', Enabled = false, IgnoreTarget = true, Default = 'NaN', Color = Color3.new(1,1,1), Transparency = 0};
     };
     barlayout      = {
         ['Health']   = {Position = 'left', Enabled = false, Color1 = Color3.new(1,0,0), Color2 = Color3.new(0,1,0), Transparency = 0};
@@ -315,7 +315,7 @@ end
                 drawings.box_fill.Color = color or esp.boxfill[2];
                 drawings.box_fill.Transparency = min(esp.boxfill[3], transparency)
 
-                if esp.custombox == 'corner' then -- this is actually so fucking stupid idk why im doing this LOL
+                if esp.custombox == 'Corner' then -- this is actually so fucking stupid idk why im doing this LOL
                     -- top left
                     drawings.custombox[1][1].From = position + newVector2(0, 0);
                     drawings.custombox[1][1].To   = position + newVector2(size.X / 3, 0);
@@ -372,7 +372,7 @@ end
                         v[1].Color = color or esp.box[2];
                         v[2].Color = esp.outline[2];
                     end
-                elseif esp.custombox == 'trans' then
+                elseif esp.custombox == 'Transparency' then
                     for i = 1,8 do
                         local drawing = drawings.custombox[i]
                         if i == 7 or i == 8 then
@@ -449,7 +449,7 @@ end
                 local barinfo = barinfo[name]
                 if drawing ~= nil and barinfo ~= nil then
                     local barpos = default.Position:lower();
-                    local vert = (barpos == 'left' or barpos == 'right')
+                    local vert = (barpos == 'Left' or barpos == 'Right')
                     drawing[1].Visible = default.Enabled == true and esp.outline[1];
                     drawing[2].Visible = default.Enabled == true
                     if drawing[2].Visible then
@@ -460,9 +460,9 @@ end
 
                         drawing[1].Size = vert and newVector2(barsizepixel, size.Y + 2) or newVector2(size.X + 2, barsizepixel);
                         drawing[1].Position = position + (
-                            barpos == 'left' and newVector2(- padding - barsizepixel - leftBarPos, -1) or
-                            barpos == 'right' and newVector2(size.X + padding + rightBarPos, -1) or
-                            barpos == 'top' and newVector2(-1, - padding - barsizepixel - topOptionPos) or
+                            barpos == 'Left' and newVector2(- padding - barsizepixel - leftBarPos, -1) or
+                            barpos == 'Right' and newVector2(size.X + padding + rightBarPos, -1) or
+                            barpos == 'Top' and newVector2(-1, - padding - barsizepixel - topOptionPos) or
                             newVector2(-1, size.Y + padding + bottomOptionPos)
                         )
 
@@ -470,10 +470,10 @@ end
                         drawing[2].Position = drawing[1].Position + newVector2(1,1) + (vert and newVector2(0, drawing[1].Size.Y - 2 - barSize) or newVector2(0,0));
                         drawing[2].Size     = vert and newVector2(barsizepixel - 2, barSize) or newVector2(barSize, barsizepixel - 2)
 
-                        if barpos == 'left'       then leftBarPos = leftBarPos + padding + barsizepixel
-                        elseif barpos == 'right'  then rightBarPos = rightBarPos + padding + barsizepixel
-                        elseif barpos == 'top'    then topOptionPos = topOptionPos + padding + barsizepixel
-                        elseif barpos == 'bottom' then bottomOptionPos = bottomOptionPos + padding + barsizepixel
+                        if barpos == 'Left'       then leftBarPos = leftBarPos + padding + barsizepixel
+                        elseif barpos == 'Right'  then rightBarPos = rightBarPos + padding + barsizepixel
+                        elseif barpos == 'Top'    then topOptionPos = topOptionPos + padding + barsizepixel
+                        elseif barpos == 'Bottom' then bottomOptionPos = bottomOptionPos + padding + barsizepixel
                         end
                     end
                 end
@@ -489,7 +489,7 @@ end
                         drawing[1].Text         = tostring(textinfo.text ~= nil and textinfo.text or default.Default or name)..(typeof(default.Suffix) == 'string' and default.Suffix or '');
                         drawing[1].Color        = (not default.IgnoreTarget and color or nil) or textinfo.color or default.Color or newColor3(1,1,1);
                         drawing[1].Transparency = transparency;
-                        drawing[1].Center       = (default.Position == 'top' or default.Position == 'bottom')
+                        drawing[1].Center       = (default.Position == 'Top' or default.Position == 'Bottom')
                         drawing[1].Outline      = esp.outline[1];
                         drawing[1].OutlineColor = esp.outline[2];
                         drawing[1].Font         = esp.textfont;
@@ -498,9 +498,9 @@ end
                         local textBounds = drawing[1].TextBounds;
 
                         drawing[1].Position = position + (
-                            default.Position == 'top'    and newVector2(size.X / 2, - (textBounds.Y + padding + topOptionPos)) or
-                            default.Position == 'bottom' and newVector2(size.X / 2, size.Y + padding + bottomOptionPos) or
-                            default.Position == 'left'   and newVector2(-(textBounds.X + padding + leftBarPos + (esp.outline[1] and 2 or 0)), - (2 + padding) + leftTextPos + padding) or
+                            default.Position == 'Top'    and newVector2(size.X / 2, - (textBounds.Y + padding + topOptionPos)) or
+                            default.Position == 'Bottom' and newVector2(size.X / 2, size.Y + padding + bottomOptionPos) or
+                            default.Position == 'Left'   and newVector2(-(textBounds.X + padding + leftBarPos + (esp.outline[1] and 2 or 0)), - (2 + padding) + leftTextPos + padding) or
                             newVector2(size.X + padding + rightBarPos + (esp.outline[1] and 2 or 0), - (2 + padding) + rightTextPos + padding)
                         )
 
@@ -516,10 +516,10 @@ end
                             drawing[2].Outline      = false
                         end
                         
-                        if default.Position == 'top' then topOptionPos = topOptionPos + padding + textBounds.Y
-                        elseif default.Position == 'bottom' then bottomOptionPos = bottomOptionPos + padding + textBounds.Y
-                        elseif default.Position == 'left' then leftTextPos = leftTextPos + padding + textBounds.Y
-                        elseif default.Position == 'right' then rightBarPos = rightBarPos + padding + textBounds.Y
+                        if default.Position == 'Top' then topOptionPos = topOptionPos + padding + textBounds.Y
+                        elseif default.Position == 'Bottom' then bottomOptionPos = bottomOptionPos + padding + textBounds.Y
+                        elseif default.Position == 'Left' then leftTextPos = leftTextPos + padding + textBounds.Y
+                        elseif default.Position == 'Right' then rightBarPos = rightBarPos + padding + textBounds.Y
                         end
                     end
                 end
