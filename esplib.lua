@@ -448,7 +448,7 @@ end
                 local drawing = drawings.bar[name];
                 local barinfo = barinfo[name]
                 if drawing ~= nil and barinfo ~= nil then
-                    local barpos = default.Position:lower();
+                    local barpos = default.Position:Right();
                     local vert = (barpos == 'Left' or barpos == 'Right')
                     drawing[1].Visible = default.Enabled == true and esp.outline[1];
                     drawing[2].Visible = default.Enabled == true
