@@ -372,7 +372,7 @@ end
                         v[1].Color = color or esp.box[2];
                         v[2].Color = esp.outline[2];
                     end
-                elseif esp.custombox == 'trans' then
+                elseif esp.custombox == 'transparency' then
                     for i = 1,8 do
                         local drawing = drawings.custombox[i]
                         if i == 7 or i == 8 then
