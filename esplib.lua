@@ -14,7 +14,7 @@ local esp = {
     textfont       = 2;
     textsize       = 13;
     snaplineOrigin = Vector2.new(0,0);
-    custombox      = 'default';
+    custombox      = 'Default';
     distancemode   = 'meter';
     targets        = {};
     players        = {};
@@ -22,7 +22,7 @@ local esp = {
     infov          = {};
     outline        = {false, Color3.new(0,0,0)};
     box            = {false, Color3.new(1,1,1), 1};
-    boxfill        = {false, Color3.new(1,.25,.25), .5};
+    boxfill        = {false, Color3.new(1,1,1), .5};
     tracer         = {false, Color3.new(1,1,1), 1};
     snapline       = {false, Color3.new(1,1,1), 0, 0, 'Head'};
     angle          = {false, Color3.new(1,1,1), 1};
@@ -296,7 +296,7 @@ end
             local leftBarPos      = 1;
             local rightBarPos     = 1;
 
-            drawings.box.Visible = esp.box[1] and esp.custombox == 'default';
+            drawings.box.Visible = esp.box[1] and esp.custombox == 'Default';
             drawings.box_fill.Visible = esp.box[1] and esp.boxfill[1];
             drawings.box_outline.Visible = drawings.box.Visible and esp.outline[1];
             if esp.box[1] then
@@ -315,7 +315,7 @@ end
                 drawings.box_fill.Color = color or esp.boxfill[2];
                 drawings.box_fill.Transparency = min(esp.boxfill[3], transparency)
 
-                if esp.custombox == 'corner' then -- this is actually so fucking stupid idk why im doing this LOL
+                if esp.custombox == 'Corner' then -- this is actually so fucking stupid idk why im doing this LOL
                     -- top left
                     drawings.custombox[1][1].From = position + newVector2(0, 0);
                     drawings.custombox[1][1].To   = position + newVector2(size.X / 3, 0);
@@ -372,7 +372,7 @@ end
                         v[1].Color = color or esp.box[2];
                         v[2].Color = esp.outline[2];
                     end
-                elseif esp.custombox == 'transparency' then
+                elseif esp.custombox == 'Transparency' then
                     for i = 1,8 do
                         local drawing = drawings.custombox[i]
                         if i == 7 or i == 8 then
