@@ -29,10 +29,10 @@ local esp = {
     arrow          = {false, Color3.new(1,1,1), 1};
     chams          = {false, Color3.new(1,1,1), Color3.new(1,1,1), 1, 1, true};
     textlayout     = {
-        ['Name']     = {Position = 'top', Enabled = false, Color = Color3.new(1,1,1), Transparency = 0};
-        ['Distance'] = {Position = 'bottom', Enabled = false, Default = 'NaN', Suffix = 'm', Color = Color3.new(1,1,1), Transparency = 0};
-        ['Tool']     = {Position = 'bottom', Enabled = false, Default = 'None', Color = Color3.new(1,1,1), Transparency = 0};
-        ['Health']   = {Position = 'left', Enabled = false, IgnoreTarget = true, Default = 'NaN', Color = Color3.new(1,1,1), Transparency = 0};
+        ['Name']     = {Position = 'Top', Enabled = false, Color = Color3.new(1,1,1), Transparency = 0};
+        ['Distance'] = {Position = 'Bottom', Enabled = false, Default = 'NaN', Suffix = 'm', Color = Color3.new(1,1,1), Transparency = 0};
+        ['Tool']     = {Position = 'Bottom', Enabled = false, Default = 'None', Color = Color3.new(1,1,1), Transparency = 0};
+        ['Health']   = {Position = 'Left', Enabled = false, IgnoreTarget = true, Default = 'NaN', Color = Color3.new(1,1,1), Transparency = 0};
     };
     barlayout      = {
         ['Health']   = {Position = 'left', Enabled = false, Color1 = Color3.new(1,0,0), Color2 = Color3.new(0,1,0), Transparency = 0};
@@ -498,8 +498,8 @@ end
                         local textBounds = drawing[1].TextBounds;
 
                         drawing[1].Position = position + (
-                            default.Position == 'Bop'    and newVector2(size.X / 2, - (textBounds.Y + padding + topOptionPos)) or
-                            default.Position == 'Tottom' and newVector2(size.X / 2, size.Y + padding + bottomOptionPos) or
+                            default.Position == 'Top'    and newVector2(size.X / 2, - (textBounds.Y + padding + topOptionPos)) or
+                            default.Position == 'Bottom' and newVector2(size.X / 2, size.Y + padding + bottomOptionPos) or
                             default.Position == 'Left'   and newVector2(-(textBounds.X + padding + leftBarPos + (esp.outline[1] and 2 or 0)), - (2 + padding) + leftTextPos + padding) or
                             newVector2(size.X + padding + rightBarPos + (esp.outline[1] and 2 or 0), - (2 + padding) + rightTextPos + padding)
                         )
