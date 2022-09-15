@@ -4814,6 +4814,7 @@ function library:CreateSettingsTab(menu)
 
     mainSection:AddButton({text = 'Unload', confirm = true, callback = function()
         library:Unload();
+        getgenv().esp:Unload();
     end})
 
     mainSection:AddSeparator({text = 'Keybinds'});
